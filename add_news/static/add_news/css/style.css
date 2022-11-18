@@ -1,0 +1,514 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+  font-family: "Kalm";
+  src: url("../fonts/kalam-regular-webfont.woff2") format("woff2"),
+    url("../fonts/kalam-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller";
+  src: url("../fonts/mullerbold-webfont.woff2") format("woff2"),
+    url("../fonts/mullerbold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller";
+  src: url("../fonts/mullermedium-webfont.woff2") format("woff2"),
+    url("../fonts/mullermedium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller";
+  src: url("../fonts/mullermediumitalic-webfont.woff2") format("woff2"),
+    url("../fonts/mullermediumitalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller";
+  src: url("../fonts/mullerregular-webfont.woff2") format("woff2"),
+    url("../fonts/mullerregular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+    min-width: 320px;
+    background-color: #b9b9b9;
+    font-family: 'Muller', sans-serif;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.list {
+  list-style: none;
+}
+
+/* Header */
+
+.header__top {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.header__logo-link {
+  font-family: 'Kalm', sans-serif;
+  font-size: 50px;
+  line-height: 100%;
+  font-weight: 900;
+  color: #525252;
+}
+
+.header__nav {
+  padding: 30px;
+  border-radius: 60px;
+  background-color: #1e1e1e;
+}
+
+.header__nav-list {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: 50%;
+}
+
+.header__list-item:not(:last-child) {
+  margin-right: 100px;
+}
+
+.header__nav-link {
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 600;
+  color: #c0c0c0;
+  transition: color .5s ease-in-out;
+}
+
+.active {
+  color: #4ac1f7;
+}
+
+.header__nav-link:hover {
+  color: #f67b00;
+}
+
+.header__btn {
+  padding: 5px 17px;
+  font-size: 50px;
+  line-height: 100%;
+  border: 2px solid #c0c0c0;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.header__btn:hover {
+  color: #ffffff;
+  background-color: #f67b00;
+  border: 2px solid #f67b00;
+}
+
+/* About */
+
+.about {
+  padding: 80px 0;
+}
+
+.about__heading {
+  margin-bottom: 40px;
+  font-size: 50px;
+  line-height: 100%;
+  text-align: center;
+}
+
+/* Contacts */
+
+.contacts {
+  padding: 80px 0;
+}
+
+/* News */
+
+.news {
+  padding: 80px 0;
+}
+
+.news__list-item:not(:last-child){
+  margin-bottom: 50px;
+}
+
+.news__news-heading {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 100%;
+  font-weight: 900;
+  color: #343434;
+  transition: color .5s ease-in-out;
+}
+
+.news__news-heading:hover {
+  color: #1a1aff;
+}
+
+.news__anons {
+  margin-bottom: 20px;
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 600;
+  color: #4f4f4f;
+}
+
+.news__text {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.news__date {
+  margin-bottom: 30px;
+  float: right;
+  font-size: 15px;
+  line-height: 100%;
+  color: #001dff;
+}
+
+/* add_news */
+
+.add_news {
+  padding: 80px 0;
+}
+
+.add_news__form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+.create__input {
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 60%;
+  height: 30px;
+  border: none;
+  border-radius: 30px;
+  transition: background-color .5s ease-in-out;
+}
+
+.create__input:hover {
+  background-color: #4f4f4f;
+}
+
+.create__input:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.create__text {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: none;
+  border-radius: 30px;
+}
+
+.add_news__btn {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  border-radius: 30px;
+  width: 30%;
+  font-size: 20px;
+  line-height: 100%;
+  border: 1px solid #1a1aff;
+  background-color: #1a1aff;
+  color: #ffffff;
+  transition: background-color .5s ease-in-out;
+  cursor: pointer;
+}
+
+.add_news__btn:hover {
+  background-color: #4ac1f7;
+}
+
+/* Detail */
+
+.detail {
+  padding: 80px 0;
+}
+
+.detail__text {
+  margin-bottom: 30px;
+  font-size: 25px;
+  line-height: 45px;
+}
+
+.detail__date {
+  float: right;
+  font-size: 15px;
+  color: white;
+}
+
+.detail__active {
+  margin-bottom: 30px;
+  font-size: 15px;
+  line-height: 100%;
+  color: #afffc3;
+}
+
+
+/* Comments */
+
+.comments {
+  padding: 80px 0;
+}
+
+.comments__none {
+  margin-bottom: 20px;
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+
+.comments__link {
+  padding: 15px 30px;
+  border: 1px solid #1a1aff;
+  border-radius: 30px;
+  background-color: #1a1aff;
+  color: #ffffff;
+  transition: background-color .5s ease-in-out;
+}
+
+.comments__link:hover {
+  background-color: #4ac1f7;
+  border: 1px solid #4ac1f7;
+}
+
+.comments__form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 auto;
+  padding: 30px;
+  width: 50%;
+  text-align: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 100%;
+  color: #646464;
+
+}
+
+.comments__user {
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 50%;
+  height: 15px;
+  border: none;
+  border-radius: 30px;
+}
+
+.comments__text {
+  margin-bottom: 30px;
+  padding: 22px;
+  width: 50%;
+  border: none;
+  border-radius: 30px;
+}
+
+.comments__news {
+  margin-bottom: 30px;
+  padding: 22px;
+  height: 15px;
+  width: 50%;
+  border: none;
+  border-radius: 30px;
+}
+
+.comments__btn {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  width: 30%;
+  border: none;
+  border-radius: 30px;
+  background-color: #4f4f4f;
+  font-size: 15px;
+  line-height: 100%;
+  color: #ffffff;
+  transition: background-color .5s ease-in-out;
+  cursor: pointer;
+}
+
+.comments__btn:hover {
+  background-color: #1e1e1e;
+}
+
+.detail_link {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #1a1aff;
+  border-radius: 30px;
+  font-size: 15px;
+  line-height: 100%;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Comments block */
+
+.comments__item {
+  padding: 20px;
+  width: 50%;
+  background-color: #6DDCBD;
+  border-radius: 30px;
+}
+
+.comments__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.comments__span {
+  margin-right: 10px;
+  font-size: 15px;
+  line-height: 100%;
+  font-weight: 600;
+  color: #001dff;
+}
+
+.comments__author {
+  margin-bottom: 20px;
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 900;
+}
+
+.comments__descr {
+  font-size: 25px;
+  line-height: 100%;
+  font-weight: 900;
+}
+
+/* Footer */
+
+.footer {
+  background-color: #5a5a5a;
+}
+
+.footer__span-block {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer__span {
+  font-size: 20px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+.footer__link {
+  display: inline-block;
+  font-size: 25px;
+  line-height: 100%;
+  color: #1a1aff;
+}
+
+/* Contacts */
+
+.contacts {
+  padding: 199px 0;
+}
+
+.contacts__list {
+  text-align: center;
+}
+
+.contacts__list-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.contacts__link-phone {
+  padding-left: 40px;
+  background-image: url("../img/phone.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 30px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #4f4f4f;
+}
+
+.contacts__link-wa {
+  padding-left: 40px;
+  background-image: url("../img/whatsapp.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 30px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #4f4f4f;
+}
+
+.contacts__link-tg {
+  padding-left: 40px;
+  background-image: url("../img/telegram.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 30px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #4f4f4f;
+}
+
+.contacts__link-mail {
+  padding-left: 40px;
+  background-image: url("../img/mail.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 30px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #4f4f4f;
+}
+
+.contacts__link-vk {
+  padding-left: 40px;
+  background-image: url("../img/vkontakte.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 30px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #4f4f4f;
+}
+
+.hov {
+  transition: color .5s ease-in-out;
+}
+
+.hov:hover {
+  color: #1a1aff;
+}

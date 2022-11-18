@@ -1,0 +1,63 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+    <link rel="stylesheet" href="{% static 'add_news/css/style.css' %}" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <a class="header__logo-link link" href="{% url 'news' %}">RUSSIAN news</a>
+            </div>
+        </div>
+        <div class="header__button">
+            <div class="container">
+                <nav class="header__nav">
+                    <ul class="header__nav-list list">
+                        <li class="header__list-item"><a href="{% url 'news' %}" class="header__nav-link link active">Главная</a></li>
+                        <li class="header__list-item"><a href="{% url 'contacts' %}" class="header__nav-link link">Контакты</a></li>
+                        <li class="header__list-item">
+                            <a href="{% url 'create' %}" class="header__nav-link link"><button class="header__btn">+</button>
+                            </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="news">
+        <div class="container">
+            <h2 class="about__heading">Новости</h2>
+            {% if news %}
+             <ul class="news__list list">
+            {% for elements in news %}
+                <li class="news__list-item">
+                    <div class="news__news-block">
+                        <a href="{{elements.id}}" class="news__news-heading link">{{elements.title}}</a>
+                        <p class="news__anons">{{elements.anons}}</p>
+                        <!--<p class="news__text">{{elements.text_news}}</p>-->
+                        <span class="news__date">от {{elements.update_date}}</span>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <p class="else">Нет ни одной новости</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__span-block">
+                <span class="footer__span">Сделано для <a href="https://skillbox.ru/" class="footer__link link" target="_blank">
+                    Skillbox
+                </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
