@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render, redirect
 from django.views import View, generic
 from .models import Articles, Comments
@@ -7,6 +8,7 @@ from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
+from django.views.generic import DetailView
 
 class NewsHomePage(ListView):
     model = Articles
@@ -71,7 +73,8 @@ class CommentsBlock(ListView):
     template_name = "add_news/detail_news.html"
     context_object_name = "news"
 
-
+class Account(TemplateView):
+    template_name = "add_news/account.html"
 # def get(self, request):
 
 
@@ -79,3 +82,36 @@ class CommentsBlock(ListView):
 
 
        # return render(request, 'add_news/detail_news.html', context={'comments': comments})
+
+
+class ArticlesDetail(DetailView):
+    model = Articles
+    template_name = 'add_news/detail_news.html'
+    context_object_name = 'detail'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_list'] = Comments.objects.filter(news_id=self.object.id)
+        comment_form = CommentsForm()
+        if self.request.user.is_authenticated:
+            comment_form.fields['name'].widget = forms.HiddenInput()
+            context['comment_form'] = comment_form
+        else:
+            context['comment_form'] = CommentsForm()
+
+        return context
+
+    def post(self, request, **kwargs):
+        detail = self.get_object()
+        comment_form = CommentsForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.news = self.get_object()
+            if self.request.user.is_authenticated:
+                comment.name = self.request.user.username
+            else:
+                comment.name = comment_form.cleaned_data.get('name') + ' / Аноним'
+            comment.save()
+            return redirect('index')
+        return render(request, 'add_news/detail_news.html',
+                      context={'comment_form': comment_form, 'detail': detail})

@@ -1,84 +1,51 @@
 {% load static %}
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{detail_news.title}}</title>
     <link rel="stylesheet" href="{% static 'add_news/css/style.css' %}" type="text/css">
 </head>
 <body>
-     <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <a class="header__logo-link link" href="{% url 'news' %}">RUSSIAN news</a>
-            </div>
-        </div>
-        <div class="header__button">
-            <div class="container">
-                <nav class="header__nav">
-                    <ul class="header__nav-list list">
-                        <li class="header__list-item"><a href="{% url 'news' %}" class="header__nav-link link">Главная</a></li>
-                        <li class="header__list-item"><a href="{% url 'contacts' %}" class="header__nav-link link">Контакты</a></li>
-                        <li class="header__list-item">
-                            <a href="{% url 'create' %}" class="header__nav-link link"><button class="header__btn">+</button>
-                            </a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <section class="detail">
-        <div class="container">
-             <h3 class="about__heading">{{detail_news.title}}</h3>
-             <p class="detail__text">{{detail_news.text_news}}</p>
-             <span class="detail__date">от {{detail_news.update_date}}</span>
-            {% if detail_news.activity %}
-            <p class="detail__active">Активно</p>
-            {% else %}
-            <p class="detail__active">В архиве</p>
+<a href="{% url 'news' %}">Главная</a>
+<div class="container">
+    <h2>{{ title }}</h2>
+    <ul>
+        <li>
+            <p>{{ detail_news.title }}</p>
+            <p>{{ detail_news.anons }}</p>
+            <p>{{ detail_news.text }}</p>
+            <p>{{ detail_news.create_at }}</p>
+            {% if request.user.is_authenticated %}
+                <p>Автор: {{ request.user.username }}</p>
             {% endif %}
-             <a href="{% url 'news_edit' detail_news.id %}" class="detail_link link">Редактировать</a>
-        </div>
-    </section>
-
-    <section class="comments">
-        <div class="container">
-            <h2 class="about__heading">Комментарии</h2>
-            {% if comments_list %}
-            <ul class="comments__list list">
-                {% for el in comments_list %}
-                <li class="comments__item">
-                    <p class="comments__author"><span class="comments__span">Пользователь:</span> {{el.username}}</p>
-                    <p class="comments__descr"><span class="comments__span">Комментарий:</span>{{el.text_comment}}</p>
+            {% if detail.activity %}
+                <p>Активно</p>
+            {% else %}
+                <p>Архив</p>
+            {% endif %}
+        </li>
+    </ul>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'add_news/detail_news.html' detail_news.id %}">Редактировать</a>
+    {% endif %}
+    <h3>{{ title_form }}</h3>
+    {% if comment_list %}
+        <ul>
+            {% for comments in comment_list %}
+                <li>
+                    <p>{{ comments.name }}</p>
+                    <p>{{ comments.comment }}</p>
                 </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <p class="comments__none">Комментариев нет</p>
-            {% endif %}
-        </div>
-    </section>
-    <section class="comment">
-        <div class="container">
-             <h3 class="about__heading">Добавить комментарий</h3>
-             <form method="post" class="comments__form">
-                 {% csrf_token %}
-                 {{comment_form.as_p}}
-                 <button type="submit" class="comments__btn">Отправить</button>
-             </form>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__span-block">
-                <span class="footer__span">Сделано для <a href="https://skillbox.ru/" class="footer__link link" target="_blank">
-                    Skillbox
-                </a>
-                </span>
-            </div>
-        </div>
-    </footer>
-
-
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Комментариев нет</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{comment_form.as_p}}
+        <button type="submit">Комментировать</button>
+    </form>
+</div>
 </body>
 </html>

@@ -5,11 +5,15 @@
     <title>Новости</title>
     <link rel="stylesheet" href="{% static 'add_news/css/style.css' %}" type="text/css">
 </head>
+ <style>
+      body {background: #f8f8f8;}
+    </style>
 <body>
+
     <header class="header">
         <div class="header__top">
             <div class="container">
-                <a class="header__logo-link link" href="{% url 'news' %}">RUSSIAN news</a>
+                <a class="header__logo-link link" href="{% url 'news' %}">Sports News</a>
             </div>
         </div>
         <div class="header__button">
@@ -18,6 +22,10 @@
                     <ul class="header__nav-list list">
                         <li class="header__list-item"><a href="{% url 'news' %}" class="header__nav-link link active">Главная</a></li>
                         <li class="header__list-item"><a href="{% url 'contacts' %}" class="header__nav-link link">Контакты</a></li>
+                        <li class="header__list-item"><a href="{% url 'login' %}" class="header__nav-link link">Логин</a></li>
+                        <li class="header__list-item"><a href="{% url 'register_user' %}" class="header__nav-link link">Регистрация</a></li>
+                        <li class="header__list-item"><a href="{% url 'account' %}" class="header__nav-link link">Аккаунт</a></li>
+                         <li class="header__list-item"><a href="{% url 'logout' %}" class="header__nav-link link">Выйти</a></li>
                         <li class="header__list-item">
                             <a href="{% url 'create' %}" class="header__nav-link link"><button class="header__btn">+</button>
                             </a></li>
@@ -27,9 +35,20 @@
         </div>
     </header>
 
+    {% if request.user.is_authenticated %}
+        <p class="headeruser-name">Привет,
+            <a class="headeruser-link link"
+               href="{% url 'account' %}">{{ request.user.username }}</a>
+        </p> <a href="{% url 'logout' %}" class="link">Выйти</a>
+    {% else %} <a href="{% url 'login' %}" class="link">Войти</a>
+        или <a href="{% url 'register_user' %}" class="link">Зарегистрироваться</a>
+    {% endif %}
+
     <section class="news">
         <div class="container">
+
             <h2 class="about__heading">Новости</h2>
+
             {% if news %}
              <ul class="news__list list">
             {% for elements in news %}
@@ -54,6 +73,7 @@
             <div class="footer__span-block">
                 <span class="footer__span">Сделано для <a href="https://skillbox.ru/" class="footer__link link" target="_blank">
                     Skillbox
+
                 </a>
                 </span>
             </div>

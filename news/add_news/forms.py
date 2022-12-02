@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select
 from .models import Articles, Comments
 
@@ -27,10 +28,13 @@ class ArticlesForm(ModelForm):
 
 
 class CommentsForm(ModelForm):
+    username = forms.CharField(max_length=100)
 
     class Meta:
         model = Comments
-        fields = ['username', 'text_comment']
+        fields = ['text_comment']
+
+
 
         widgets = {
              'username': TextInput(attrs={
